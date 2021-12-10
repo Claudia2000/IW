@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title></title>
+    <link type="text/css"  rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+
+	<script src="{{ url_for('static', filename='app.js') }}"></script>
+    
+    
+	
+</head>
+<body>
+<h1>Listado de reservas</h1>
+<div>
+    <table id="myTable" class="datatable">
+        <thead>
+            <tr>
+
+                <th>ID</th>
+                <th>Nombre del cliente</th>
+                <th>Fecha de entrada</th>
+                <th>Fecha de salida</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in get_reserva %}
+                <tr >
+                    <td>{{ p['idres'] }}</td>
+                    <td contenteditable='false'>{{ p['nomcli'] }}</td>
+                    <td contenteditable='false'>{{ p['fecha_ingreso'] }}</td>
+                    <td contenteditable='false'>{{ p['fecha_salida'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <div class="form">
+    <form >
+        <label for="fname">Nombre del cliente</label>
+        <input type="text" id="nomcli" name="fname"><br><br>
+        <br>
+        <label for="fname">Fecha de entrada</label>
+        <input type="date" id="fecha_ingreso" name="fname"><br><br>
+        <br>
+        <label for="dni">Fecha de salida:</label>
+        <input type="date" id="fecha_salida" name="lname"><br><br>
+        <br>
+    </form>
+    <button id="createres" >Agregar reserva</button>
+    <br><br>
+    <form method="get" action="/index">
+        <input type="submit" value="Enviar correos" name="action1"/>
+    </form>
+</div>
+</div>
+
+
+</body>
+</html>

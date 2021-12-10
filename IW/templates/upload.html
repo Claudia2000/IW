@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link type="text/css"  rel="stylesheet" href="{{ url_for('static', filename='estiloclau.css') }}"/>
+        <title></title>
+    </head>
+   <body>
+       <br><br><br>
+    <div class="form">
+      <form action = "/uploader" method = "POST" 
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" />
+         <input type = "submit"/>
+      </form>
+    </div>
+   </body>
+</html>

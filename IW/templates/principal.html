@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title></title>
+    <link type="text/css"  rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+
+	<script src="{{ url_for('static', filename='app.js') }}"></script>
+	
+</head>
+<body>
+    <br><br><br>
+<div>
+    <table id="myTable" class="datatable">
+        <thead>
+            <tr>
+
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Dni</th>
+                <th>Celular</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in get_cliente %}
+                <tr >
+                    
+                    <td>{{ p['idcliente'] }}</td>
+                    <td contenteditable='true'>{{ p['name'] }}</td>
+                    <td contenteditable='true'>{{ p['dni'] }}</td>
+                    <td contenteditable='true'>{{ p['cel'] }}</td>
+                    <td><button class="delete" name="delete">Eliminar</button></td>
+                    <td><button class="update">Actualizar</button></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <div class="form">
+    <form >
+        <label for="fname">Nombre</label>
+        <input type="text" id="name" name="fname"><br><br>
+        
+        <label for="dni">DNI</label>
+        <input type="text" id="dni" name="lname"><br><br>
+        
+        <label for="cel">Celular</label>
+        <input type="text" id="cel" name="lname"><br><br>
+        
+    </form>
+      <button id="create" >Agregar cliente</button>
+    
+    <br><br>
+      <form method="post" action="/logout">
+        <input type="submit" value="Cerrar sesion" name="action1"/>
+    </form>
+    <form method="post" action="/reservar">
+        <input type="submit" value="Reservas" name="action2"/>
+    </form>
+</div>
+</div>
+
+
+</body>
+</html>
